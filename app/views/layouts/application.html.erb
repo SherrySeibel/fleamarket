@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<h1><%= link_to "Fleemarket", root_path %></h1>
+
+<% if signed_in? %>
+  <p>You are currently signed in as <%= current_user.email %>. <%= link_to "Sign out?", session_path, method: :delete %></p>
+<% end %>
+
 <%= yield %>
 
 </body>
