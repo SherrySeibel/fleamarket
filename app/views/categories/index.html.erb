@@ -1,0 +1,17 @@
+<h3>See all categories here</h3>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %> 
+</ul>
+
+<h3>Don't see one you like? Make a new category</h4>
+
+<%= form_for @category do |form| %>
+  <%= form.label :name, "Category Name" %>
+  <%= form.text_field :name %>
+  <div>
+    <%= form.submit :submit %>
+  </div>
+<% end %>

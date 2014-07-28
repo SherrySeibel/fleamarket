@@ -1,0 +1,5 @@
+<h2>FleaMarket Dashboard</h2>
+
+<% if current_user.admin? %>
+  <%= link_to "Create new Category", :categories %>
+<% end %>
