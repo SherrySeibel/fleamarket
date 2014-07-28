@@ -8,5 +8,6 @@ class Product < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  CONDITIONS = [["New"], ["Used--Good"], ["Used--Acceptable"], ["Refurbished"], ["Poor"]]
+  has_many :product_categories
+  has_many :categories, through: :product_categories
 end
