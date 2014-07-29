@@ -23,10 +23,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).
       permit(
-      :name,
-      :description,
-      :condition,
-      :category_id
+        :name,
+        :description,
+        :condition,
+        :category_id
     )
   end
 end
