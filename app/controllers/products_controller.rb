@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       redirect_to current_user
-    else 
+    else
       render :new
     end
   end
@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @image = Image.new
+    @images = @product.images
   end
 
   private
@@ -35,6 +37,7 @@ class ProductsController < ApplicationController
         :price,
         :auction_starts_at,
         :auction_ends_at,
+        :url,
     )
   end
 end

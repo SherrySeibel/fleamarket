@@ -1,0 +1,7 @@
+<%= form_for [@product, @image] do |url_form| %>
+  <div>
+  <%= url_form.label :url, "Add image:" %>
+  <%= url_form.text_field :url, placeholder: "Image URL" %>
+  <%= url_form.submit %>
+</div>
+<% end %>

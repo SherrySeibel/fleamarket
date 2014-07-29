@@ -9,8 +9,14 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :categories, only: [:index, :create, :show, :destroy]
     resources :products, only: [:new, :create, :index]
+    resources :images, only: [:new]
 
-    get "/", to: "dashboard#show", as: :dashboard
+    resources :categories, only: [:index, :create]
+    resources :products, only: [:new, :create, :show, :index] do
+      resources :images, only: [:new, :create]
+    end
+    resources :users, only: [:show]
+    get "/", to: "dashboards#show", as: :dashboard
   end
 
   root to: "sessions#new"

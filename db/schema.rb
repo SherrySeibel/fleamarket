@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 20140729202550) do
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
+  create_table "images", force: true do |t|
+    t.string   "url",        null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["url", "product_id"], name: "index_images_on_url_and_product_id", using: :btree
+
+  create_table "product_categories", force: true do |t|
+    t.integer  "product_id",  null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "product_categories", ["product_id", "category_id"], name: "index_product_categories_on_product_id_and_category_id", unique: true, using: :btree
+
   create_table "products", force: true do |t|
     t.string   "name",              null: false
     t.string   "condition",         null: false
