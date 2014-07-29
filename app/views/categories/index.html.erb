@@ -1,7 +1,7 @@
 <h3>See all categories here</h3>
 
 <ul>
-  <% @categories.each do |category| %>
+  <% @categories.alphabetical.each do |category| %>
     <li><%= category.name %></li>
   <% end %> 
 </ul>
