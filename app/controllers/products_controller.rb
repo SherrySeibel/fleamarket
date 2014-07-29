@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
         :name,
         :description,
         :condition,
-        :category_id
+        :category_id,
     )
   end
 end
