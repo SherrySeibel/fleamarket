@@ -1,2 +1,7 @@
-<h1>My Products</h1>
-<%= render @products %>
+<h2><%= @user.email %>'s Products</h2>
+
+<ul>
+  <% @products.each do |product| %>
+    <li><%= link_to product.name, product %></li>
+  <% end %>
+</ul>

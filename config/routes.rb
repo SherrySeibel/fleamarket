@@ -6,8 +6,13 @@ Rails.application.routes.draw do
 
   constraints Monban::Constraints::SignedIn.new do
     resources :categories, only: [:index, :create]
-    resources :products, only: [:new, :create, :index]
-    get "/", to: "dashboard#show", as: :dashboard
+    resources :products, only: [:new, :create, :show]
+    
+    resources :users, only: [:show] do
+      resources :products, only: [:index]
+    end
+
+    get "/", to: "dashboards#show", as: :dashboard
   end
 
   root to: "sessions#new"
