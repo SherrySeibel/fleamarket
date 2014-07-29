@@ -9,15 +9,14 @@ class ProductsController < ApplicationController
     @categories = Category.all
 
     if @product.save
-      redirect_to [current_user, :products]
+      redirect_to current_user
     else 
       render :new
     end
   end
 
   def index
-    @user = User.find(params[:user_id])
-    @products = @user.products
+    @products = Product.all
   end
 
   def show
