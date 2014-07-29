@@ -5,9 +5,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = current_user.products.new(product_params)
+    @product = current_user.products.new(product_params)
+    @categories = Category.all
 
-    if product.save
+    if @product.save
       redirect_to :products
     else 
       render :new
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
         :name,
         :description,
         :condition,
-        :category_id
+        :category_id,
     )
   end
 end
