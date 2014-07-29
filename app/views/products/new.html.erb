@@ -17,9 +17,17 @@
 
   <div>
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description %>
   </div>
 
+  <div>
+    <%=form.label :auction_started_at %>
+    <%=form.datetime_local_field :auction_started_at %>
+  </div>
+  <div>
+    <%=form.label :auction_ended_at %>
+    <%=form.datetime_local_field :auction_ended_at %>
+  </div>
   <div>
     <%= form.submit %>
   </div>
