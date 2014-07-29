@@ -1,6 +1,10 @@
 <hr>
-<h3><%= link_to product.name, product %></h3>
-<p><%= product.description %></p>
-<p>Category: <%= product.category.name %><br>
-Condition: <%= product.condition %><br>
-Item Created: <%= time_ago_in_words(product.created_at) %> ago</p>
+<h3><%= product.name %></h3>
+<p>
+  Description:<%= product.description %><br>
+  Category: <%= product.category.name %><br>
+  Condition: <%= product.condition %><br>
+  Auction starts at: <%= product.auction_starts_at %><br>
+  Auction ends at: <%= product.auction_ends_at %><br>
+  Item Created: <%= time_ago_in_words(product.created_at) %> ago<br>
+</p>
