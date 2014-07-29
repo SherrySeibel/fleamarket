@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   
   def require_admin
-    (current_user.admin: true)
+    if ! current_user.admin
+      redirect_to :root
+    end
   end
 end
