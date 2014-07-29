@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 20140729182157) do
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "products", force: true do |t|
-    t.string   "name",               null: false
-    t.string   "condition",          null: false
-    t.text     "description",        null: false
-    t.integer  "user_id",            null: false
-    t.integer  "category_id",        null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.datetime "auction_started_at"
-    t.datetime "auction_ended_at"
+    t.string   "name",              null: false
+    t.string   "condition",         null: false
+    t.text     "description",       null: false
+    t.integer  "user_id",           null: false
+    t.integer  "category_id",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "auction_starts_at", null: false
+    t.datetime "auction_ends_at",   null: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
