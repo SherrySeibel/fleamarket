@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   validates :user, presence: true
   validates :category, presence: true
   validates :price, presence: true
+  validates :auction_starts_at, presence: true
+  validates :auction_ends_at, presence: true
 
   belongs_to :user
   belongs_to :category

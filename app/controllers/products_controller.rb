@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
         :condition,
         :category_id,
         :price,
+        :auction_starts_at,
+        :auction_ends_at,
     )
   end
 end

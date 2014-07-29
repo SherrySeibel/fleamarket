@@ -1,6 +1,4 @@
 <h2>FleaMarket Dashboard</h2>
 <h2><%= link_to "Add new item for sale", [:new, :product] %></h2>
 
-<% if current_user.admin? %>
-  <%= link_to "Create a new category", :categories %>
-<% end %>
+<%= link_to "Item categories", :categories %>

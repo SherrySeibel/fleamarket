@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :require_admin, only: [:create]
+  before_action :require_admin, only: [:create, :destroy]
 
   def index
     @categories = Category.alphabetical
@@ -20,6 +20,17 @@ class CategoriesController < ApplicationController
       @categories = Category.all
       render :index
     end
+  end
+
+  def show
+    @category = Category.find(params[:id])
+    @products = @category.products
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to :categories
   end
 
   private
