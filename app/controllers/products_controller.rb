@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def new
-    @categories = Category.all
+    @categories = Category.all.alphabetical
     @product = Product.new
   end
 
