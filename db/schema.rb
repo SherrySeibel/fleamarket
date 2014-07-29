@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20140729202550) do
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["price"], name: "index_products_on_price", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
