@@ -1,26 +1,26 @@
 <%= form_for @product do |form| %>
   <%= render "error_messages", target: @product %>
-<div>
-  <%= form.label :name, "What are you selling?" %>
-  <%= form.text_field :name %>
-</div>
+  <div>
+    <%= form.label :name, "What are you selling?" %>
+    <%= form.text_field :name %>
+  </div>
 
-<div>
-  <%= form.label :category_id %>
-  <%= form.collection_select(:category_id, @categories, :id, :name) %>
-</div>
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select(:category_id, @categories, :id, :name) %>
+  </div>
 
-<div>
-  <%= form.label :condition %>
-  <%= form.select :condition, Product::CONDITIONS %>
-</div>
+  <div>
+    <%= form.label :condition %>
+    <%= form.select :condition, Product::CONDITIONS %>
+  </div>
 
-<div>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-</div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
 
-<div>
-  <%= form.submit %>
-</div>
+  <div>
+    <%= form.submit %>
+  </div>
 <% end %>
