@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :images, only: [:new, :create]
     end
 
+    resource :search, only: [:show]
+
     get "/", to: "dashboards#show", as: :dashboard
   end
 
