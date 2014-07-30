@@ -1,7 +1,16 @@
 <hr>
+
 <h3><%= link_to product.name, product %></h3>
+<p><%= link_to "Add image", [:new, product, :image] %></p>
+
+<div>
+  <% product.images.each do |image| %>
+    <p><%= image_tag image.url %></p>
+  <% end %>
+</div>
+
 <p>
-  Description:<%= product.description %><br>
+  Description: <%= product.description %><br>
   Category: <%= product.category.name %><br>
   Condition: <%= product.condition %><br>
   Price: <%= number_to_currency(product.price) %><br>
@@ -9,13 +18,3 @@
   Auction ends at: <%= product.auction_ends_at %><br>
   Item Created: <%= time_ago_in_words(product.created_at) %> ago<br>
 </p>
-
-<p><%= link_to "Add image", [:new, product, :image] %></p>
-
-<div>
-  <% if product.images %>
-    <% product.images.each do |image| %>
-      <p><%= image_tag image.url %></p>
-    <% end %>
-  <% end %>
-</div>
