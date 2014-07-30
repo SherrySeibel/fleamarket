@@ -28,7 +28,16 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     @categories = Category.all
-    @category = Category.order("ASC")
+  end
+
+  def update
+    @product = current_user.products.find(params[:id])
+
+    if @product.update(product_params)
+      redirect_to @product
+    else
+      render :edit
+    end
   end
 
   private

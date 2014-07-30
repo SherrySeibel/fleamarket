@@ -4,9 +4,15 @@
 <p><%= link_to "Add image", [:new, product, :image] %></p>
 
 <div>
+<<<<<<< HEAD
   <% product.images.each do |image| %>
+=======
+  <% @images.each do |image| %>
+    <% if image.present? %>
+>>>>>>> Enable product edits to persist in the database
     <p><%= image_tag image.url %></p>
   <% end %>
+<% end %>
 </div>
 
 <p>
@@ -20,5 +26,5 @@
 </p>
 
 <div>
-   <%= link_to "Edit post", [:edit, @product] %>
+   <%= link_to "Edit product", [:edit, @product] %>
  </div>

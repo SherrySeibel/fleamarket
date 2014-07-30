@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   constraints Monban::Constraints::SignedIn.new do
     resources :users, only: [:show]
     resources :categories, only: [:index, :create, :show, :destroy]
-    resources :products, only: [:new, :edit, :create, :show, :index] do
+    resources :products, only: [:new, :create, :edit, :update, :show, :index] do
       resources :images, only: [:new, :create]
     end
 
