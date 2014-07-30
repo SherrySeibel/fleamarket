@@ -18,3 +18,7 @@
   Auction ends at: <%= product.auction_ends_at %><br>
   Item Created: <%= time_ago_in_words(product.created_at) %> ago<br>
 </p>
+
+<div>
+   <%= link_to "Edit post", [:edit, @product] %>
+ </div>

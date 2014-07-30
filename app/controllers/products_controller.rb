@@ -25,6 +25,9 @@ class ProductsController < ApplicationController
     @images = @product.images
   end
 
+  def edit
+  end
+
   private
 
   def product_params
