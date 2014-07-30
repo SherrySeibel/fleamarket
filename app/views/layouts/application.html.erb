@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Fleemarket</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Fleemarket</title>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-<h1><%= link_to "Fleemarket", root_path %></h1>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<% if signed_in? %>
-  <p>You are currently signed in as <%= current_user.email %>. <%= link_to "Sign out?", session_path, method: :delete %></p>
-<% end %>
+  <body>
+    <h1><%= link_to "Fleemarket", root_path %></h1>
 
-<%= yield %>
-
-</body>
+    <% if signed_in? %>
+      <p>You are currently signed in as <%= current_user.email %>. <%= link_to "Sign out?", session_path, method: :delete %></p>
+    <% end %>
+    
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
