@@ -5,7 +5,7 @@ class Search
     @query = attributes[:query]
   end
   
-  def run
+  def results
     Product.where("name || description ILIKE ?", "%#{@query}%")
   end
 end
