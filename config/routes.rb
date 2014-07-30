@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :categories, only: [:index, :create, :show, :destroy]
     resources :products, only: [:new, :create, :edit, :update, :show, :index] do
+      resources :bids, only: [:new, :create]
       resources :images, only: [:new, :create]
     end
 
     resource :search, only: [:show]
-
     get "/", to: "dashboards#show", as: :dashboard
   end
 

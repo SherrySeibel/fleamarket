@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(version: 20140730172514) do
   enable_extension "plpgsql"
 
   create_table "bids", force: true do |t|
-    t.integer "amount",     default: 0, null: false
-    t.integer "product_id",             null: false
-    t.integer "user_id",                null: false
-    t.string  "timestamps",             null: false
+    t.decimal  "amount",     precision: 8, scale: 2, default: 0.0, null: false
+    t.integer  "product_id",                                       null: false
+    t.integer  "user_id",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "bids", ["amount", "product_id"], name: "index_bids_on_amount_and_product_id", unique: true, using: :btree

@@ -1,7 +1,11 @@
 <%= render @product %>
+
 <h3>Place a bid on <%= @product.name %></h3>
-<%= form_for :bid do |bid| %>
-  <%= bid.label "Enter your bid: $" %>
-  <%= bid.number_field :amount, step: 1.0 %>
-  <%= bid.submit :submit %>
+
+<%= render "error_messages", target: @bid %>
+
+<%= form_for [@product, @bid] do |form| %>
+  <%= form.label "Enter your bid in USD " %>
+  <%= form.number_field :amount, step: 1.0 %>
+  <%= form.submit :submit %>
 <% end %>

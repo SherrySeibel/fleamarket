@@ -1,14 +1,6 @@
-<div>
-  <%= form_tag search_path, method: :get do %>
-    <%= text_field_tag :query %>
-    <%= submit_tag "Search" %>
-  <% end %>
-</div>
-
+<h2>FleaMarket Dashboard</h2>
 <% if current_user.admin? %>
-  <h3><%= link_to "Create new Category", :categories %></h3>
+  <%= link_to "Categories", :categories %>
 <% end %>
-
-<h3><%= link_to "Categories", :categories %></h3>
 <h3><%= link_to "View my products", current_user %></h3>
 <h3><%= link_to "Add new item for sale", [:new, :product] %></h3>

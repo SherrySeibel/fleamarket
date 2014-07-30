@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def new
-    @categories = Category.all.alphabetical
+    @categories = Category.alphabetical
     @product = Product.new
   end
 
@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product
     else
+      @bid = Bid.new
       render :edit
     end
   end
