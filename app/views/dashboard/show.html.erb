@@ -1,4 +1,15 @@
-<h2>FleaMarket Dashboard</h2>
-<h2><%= link_to "Add new item for sale", [:new, :product] %></h2>
+<div>
+  <%= form_for @search do |form| %>
+    <%= form.label "Search all posts" %>
+    <%= form.text_field :query, required: true %>
+    <%= form.submit %>
+  <% end %>
+</div>
 
-<%= link_to "Categories", :categories %>
+<% if current_user.admin? %>
+  <h3><%= link_to "Create new Category", :categories %></h3>
+<% end %>
+
+<h3><%= link_to "Categories", :categories %></h3>
+<h3><%= link_to "View my products", current_user %></h3>
+<h3><%= link_to "Add new item for sale", [:new, :product] %></h3>
