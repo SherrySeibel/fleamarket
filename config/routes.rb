@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#show"
-    get "/", to: "dashboard#show", as: :dashboard
+    get "/", to: "dashboards#show", as: :dashboard
   end
 
   root to: "sessions#new"
