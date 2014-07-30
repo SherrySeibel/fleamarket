@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def create
     search = Search.new(search_params)
-    @products = search.run
+    @products = search.run.chronological
     render :show
   end
 

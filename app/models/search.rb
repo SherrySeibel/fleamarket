@@ -8,10 +8,6 @@ class Search
   end
 
   def run
-    Product.where("name || description ILIKE ?", "%#{@query}%").chronological
-  end
-
-  def persisted?
-    false
+    Product.where("name || description ILIKE ?", "%#{@query}%")
   end
 end
