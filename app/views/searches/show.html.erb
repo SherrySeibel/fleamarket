@@ -1,0 +1,8 @@
+<div>
+  <h3>Search Results</h3>
+  <% if @products.present? %>
+    <%= render @products %>
+  <% else %>
+    <h3>No results found</h3>
+  <% end %>
+</div>

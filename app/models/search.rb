@@ -8,7 +8,7 @@ class Search
   end
 
   def run
-    Post.where("title OR description ILIKE ?", "%#{@query}%").chronological
+    Product.where("name || description ILIKE ?", "%#{@query}%").chronological
   end
 
   def persisted?

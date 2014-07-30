@@ -13,4 +13,8 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   CONDITIONS = [["New"], ["Used--Good"], ["Used--Acceptable"], ["Refurbished"], ["Poor"]]
+
+  def self.chronological
+    order("created_at DESC")
+  end
 end
