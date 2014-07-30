@@ -1,8 +1,7 @@
 <div>
-  <%= form_for @search do |form| %>
-    <%= form.label "Search all posts" %>
-    <%= form.text_field :query, required: true %>
-    <%= form.submit %>
+  <%= form_tag search_path, method: :get do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag "Search" %>
   <% end %>
 </div>
 

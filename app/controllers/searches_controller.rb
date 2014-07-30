@@ -1,16 +1,6 @@
 class SearchesController < ApplicationController
-  def create
-    search = Search.new(search_params)
+  def show
+    search = Search.new(params)
     @products = search.run.chronological
-    render :show
-  end
-
-  private
-
-  def search_params
-    params.require(:search).
-      permit(
-        :query
-    )
   end
 end
