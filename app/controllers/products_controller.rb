@@ -26,6 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @category = Category.order("ASC")
   end
 
   private

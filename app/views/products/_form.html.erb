@@ -1,41 +1,38 @@
-<%= form_for @product do |form| %>
-  <%= render "error_messages", target: @product %>
-  <div>
-    <%= form.label :name, "What are you selling?" %>
-    <%= form.text_field :name %>
-  </div>
+<div>
+  <%= form.label :name, "What are you selling?" %>
+  <%= form.text_field :name %>
+</div>
 
-  <div>
-    <%= form.label :category_id %>
-    <%= form.collection_select(:category_id, @categories, :id, :name) %>
-  </div>
+<div>
+  <%= form.label :category_id %>
+  <%= form.collection_select(:category_id, @categories, :id, :name) %>
+</div>
 
-  <div>
-    <%= form.label :condition %>
-    <%= form.select :condition, Product::CONDITIONS %>
-  </div>
+<div>
+  <%= form.label :condition %>
+  <%= form.select :condition, Product::CONDITIONS %>
+</div>
 
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
+<div>
+  <%= form.label :price %>
+  <%= form.number_field :price, step: 0.50 %>
+</div>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+<div>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+</div>
 
-  <div>
-    <%= form.label :auction_starts_at %>
-    <%= form.datetime_local_field :auction_starts_at %>
-  </div>
+<div>
+  <%= form.label :auction_starts_at %>
+  <%= form.datetime_local_field :auction_starts_at %>
+</div>
 
-  <div>
-    <%= form.label :auction_ends_at %>
-    <%= form.datetime_local_field :auction_ends_at %>
-  </div>
+<div>
+  <%= form.label :auction_ends_at %>
+  <%= form.datetime_local_field :auction_ends_at %>
+</div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<div>
+  <%= form.submit %>
+</div>
