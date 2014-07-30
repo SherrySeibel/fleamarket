@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   validates :auction_starts_at, presence: true
   validates :auction_ends_at, presence: true
 
-  has_many :images
+  has_many :images, dependent: :destroy
   belongs_to :user
   belongs_to :category
 

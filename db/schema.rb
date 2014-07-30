@@ -31,28 +31,19 @@ ActiveRecord::Schema.define(version: 20140729202550) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "images", ["url", "product_id"], name: "index_images_on_url_and_product_id", using: :btree
-
-  create_table "product_categories", force: true do |t|
-    t.integer  "product_id",  null: false
-    t.integer  "category_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "product_categories", ["product_id", "category_id"], name: "index_product_categories_on_product_id_and_category_id", unique: true, using: :btree
+  add_index "images", ["product_id"], name: "index_images_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
-    t.string   "name",              null: false
-    t.string   "condition",         null: false
-    t.text     "description",       null: false
-    t.integer  "user_id",           null: false
-    t.integer  "category_id",       null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.datetime "auction_starts_at", null: false
-    t.datetime "auction_ends_at",   null: false
-    t.decimal  "price",       precision: 8, scale: 2, default: 0.0, null: false
+    t.string   "name",                                                    null: false
+    t.string   "condition",                                               null: false
+    t.text     "description",                                             null: false
+    t.integer  "user_id",                                                 null: false
+    t.integer  "category_id",                                             null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.datetime "auction_starts_at",                                       null: false
+    t.datetime "auction_ends_at",                                         null: false
+    t.decimal  "price",             precision: 8, scale: 2, default: 0.0, null: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
