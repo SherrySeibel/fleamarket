@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @image = @product.current_user.images.new(image_params)
+    @image = @product.images.new(image_params)
 
     if @image.save
       redirect_to @product
