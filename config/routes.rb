@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     get "/", to: "dashboards#show", as: :dashboard
   end
 
+  resources :searches, only: [:create, :show]
+
   root to: "sessions#new"
 end
