@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
         :description,
         :condition,
         :category_id,
-        :starting_price,
+        :price,
     )
   end
 end

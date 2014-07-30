@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140729202550) do
     t.datetime "updated_at",        null: false
     t.datetime "auction_starts_at", null: false
     t.datetime "auction_ends_at",   null: false
-    t.decimal  "price", default: 0.0, null: false
+    t.decimal  "price",       precision: 8, scale: 2, default: 0.0, null: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
