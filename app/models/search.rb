@@ -6,6 +6,6 @@ class Search
   end
   
   def results
-    Product.where("name || description ILIKE ?", "%#{@query}%")
+    Product.where("name ILIKE :query OR description ILIKE :query", query: "%#{@query}%")
   end
 end
