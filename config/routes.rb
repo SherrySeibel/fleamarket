@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   constraints Monban::Constraints::SignedIn.new do
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :payments, only: [:new, :create]
+    end
+
     resources :categories, only: [:index, :create, :show, :destroy]
     resources :products, only: [:new, :create, :edit, :update, :show, :index] do
       resources :bids, only: [:new, :create]

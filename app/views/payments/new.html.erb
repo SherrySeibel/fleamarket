@@ -1,0 +1,47 @@
+<%= form_for [current_user, @payment] do |form| %>
+  <div>
+    <%= form.label :buyer_id %>:
+    <%= current_user.email %>
+    <%= form.hidden_field :buyer_id %>
+    <%= hidden_field_tag current_user.id, current_user.email %>
+  </div>
+
+  <div>
+    <%= form.label :seller_id %>
+    <%= form.collection_select(:seller_id, @sellers, :id, :email) %>
+  </div>
+
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount, step: 0.50 %>
+  </div>
+
+  <div>
+    <%= form.label :product_id %>
+    <%= form.collection_select(:product_id, @products, :id, :name) %>
+  </div>
+
+  <div>
+    <%= label_tag :card_number, "Credit Card Number" %>
+    <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+
+  <div>
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+
+  <div>
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
+
+  <%= form.hidden_field :stripe_card_token %>
+
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+
+  <%= form.submit "Pay" %>
+<% end %>
