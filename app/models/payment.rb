@@ -12,7 +12,7 @@ class Payment < ActiveRecord::Base
   def save_sale
     if valid?
       customer = Stripe::Customer.create(
-        description: product_id, 
+        description: buyer_id, 
         card: stripe_card_token
       )
       self.stripe_customer_token = customer.id
@@ -20,7 +20,7 @@ class Payment < ActiveRecord::Base
 
       charge = Stripe::Charge.create(
         :customer    => customer.id,
-        :amount      => amount,
+        :amount      => (amount * 100).to_i,
         :description => 'Rails Stripe customer',
         :currency    => 'usd'
       )
