@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = current_user.products.find(params[:id])
+    @categories = Category.all
 
     if @product.update(product_params)
       redirect_to @product
