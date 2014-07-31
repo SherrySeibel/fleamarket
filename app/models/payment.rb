@@ -8,4 +8,12 @@ class Payment < ActiveRecord::Base
   validates :buyer, presence: true
 
   attr_accessor :stripe_card_token
+
+  def save_sale
+    if valid?
+      customer = Stripe::Customer.create(description: product_id, card: stripe_card_token)
+      self.stripe_customer_token = customer.id
+      save!
+    end
+  end
 end

@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
 
-    if @payment.save
+    if @payment.save_sale
       redirect_to root_path
     else
       @products = Product.all
@@ -23,9 +23,9 @@ class PaymentsController < ApplicationController
     params.require(:payment).
       permit(
         :amount,
-        :buyer,
-        :seller,
+        :seller_id,
         :product_id,
-    )
+        :stripe_card_toke
+    ).merge(buyer_id: current_user.id)
   end
 end

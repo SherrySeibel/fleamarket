@@ -1,12 +1,5 @@
 <%= form_for [current_user, @payment] do |form| %>
   <div>
-    <%= form.label :buyer_id %>:
-    <%= current_user.email %>
-    <%= form.hidden_field :buyer_id %>
-    <%= hidden_field_tag current_user.id, current_user.email %>
-  </div>
-
-  <div>
     <%= form.label :seller_id %>
     <%= form.collection_select(:seller_id, @sellers, :id, :email) %>
   </div>
