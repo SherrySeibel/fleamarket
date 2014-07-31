@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
         :amount,
         :seller_id,
         :product_id,
-        :stripe_card_toke
+        :stripe_card_token
     ).merge(buyer_id: current_user.id)
   end
 end
