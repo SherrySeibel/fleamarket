@@ -4,27 +4,21 @@
 <p><%= link_to "Add image", [:new, product, :image] %></p>
 
 <div>
-<<<<<<< HEAD
   <% product.images.each do |image| %>
-=======
-  <% @images.each do |image| %>
-    <% if image.present? %>
->>>>>>> Enable product edits to persist in the database
     <p><%= image_tag image.url %></p>
   <% end %>
-<% end %>
 </div>
 
 <p>
-  Description: <%= product.description %><br>
-  Category: <%= product.category.name %><br>
-  Condition: <%= product.condition %><br>
-  Price: <%= number_to_currency(product.price) %><br>
-  Auction starts at: <%= product.auction_starts_at %><br>
-  Auction ends at: <%= product.auction_ends_at %><br>
-  Item Created: <%= time_ago_in_words(product.created_at) %> ago<br>
+Description: <%= product.description %><br>
+Category: <%= product.category.name %><br>
+Condition: <%= product.condition %><br>
+Price: <%= number_to_currency(product.price) %><br>
+Auction starts at: <%= product.auction_starts_at %><br>
+Auction ends at: <%= product.auction_ends_at %><br>
+Item Created: <%= time_ago_in_words(product.created_at) %> ago<br>
 </p>
 
 <div>
-   <%= link_to "Edit product", [:edit, @product] %>
- </div>
+  <%= link_to "Edit product", [:edit, product] %>
+</div>

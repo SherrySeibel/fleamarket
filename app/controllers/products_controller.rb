@@ -21,12 +21,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @image = Image.new
     @images = @product.images
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
     @categories = Category.all
   end
 
