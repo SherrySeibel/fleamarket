@@ -11,23 +11,32 @@ class Payment < ActiveRecord::Base
 
   def save_sale
     if valid?
-      customer = Stripe::Customer.create(
-        description: buyer_id, 
-        card: stripe_card_token
-      )
-      self.stripe_customer_token = customer.id
-      save!
-
-      charge = Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => (amount * 100).to_i,
-        :description => 'Rails Stripe customer',
-        :currency    => 'usd'
-      )
+      create_stripe_customer
+      create_stripe_charge
     end
 
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
+  end
+
+  private
+
+  def create_stripe_customer
+    customer = Stripe::Customer.create(
+      description: buyer_id, 
+      card: stripe_card_token
+    )
+    self.stripe_customer_token = customer.id
+    save!
+  end
+
+  def create_stripe_charge
+    charge = Stripe::Charge.create(
+      :customer    => self.stripe_customer_token,
+      :amount      => (amount * 100).to_i,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
   end
 end
