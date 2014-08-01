@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration
       t.belongs_to :buyer, index: true, null: false
       t.belongs_to :seller, index: true, null: false
       t.belongs_to :product, index: true, null: false
-      t.string :stripe_customer_token, index: true, null: false
+      t.string :stripe_customer_token, null: false
 
       t.timestamps null: false
     end
