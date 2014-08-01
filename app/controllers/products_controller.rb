@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :require_owner, only: [:edit, :update]
+
   def new
     @categories = Category.alphabetical
     @product = Product.new
