@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   def new
     @payment = Payment.new
     @products = Product.all
-    @sellers = User.sellers
+    @sellers =  User.where.not(id: current_user.id)
   end
 
   def create
@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
       redirect_to root_path
     else
       @products = Product.all
-      @sellers = User.sellers
+      @sellers =  User.where.not(id: current_user.id)
       render :new
     end
   end
