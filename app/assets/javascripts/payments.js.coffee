@@ -1,11 +1,11 @@
 jQuery ->
-  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
+  Stripe.setPublishableKey($('meta[name="stripe-key"]').prop('content'))
   payment.setupForm()
 
 payment =
   setupForm: ->
     $('#new_payment').submit ->
-      $('input[type=submit]').attr('disabled', true)
+      $('input[type=submit]').prop('disabled', true)
       payment.processCard()
       false
 
@@ -23,4 +23,4 @@ payment =
       $('#new_payment')[0].submit()
     else
       $('#stripe_error').text(response.error.message)
-      $('input[type=submit]').attr('disabled', false)
+      $('input[type=submit]').prop('disabled', false)
