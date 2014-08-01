@@ -1,15 +1,16 @@
-<h3>Categories</h3>
+<h3>Product Categories</h3>
 
 <ul>
   <%= render "categories" %>
 </ul>
+<% if current_user.admin? %>
+  <h3>Don't see one you like? Make a new category</h4>
 
-<h3>Don't see one you like? Make a new category</h4>
-
-<%= form_for @category do |form| %>
-  <%= form.label :name, "Category Name" %>
-  <%= form.text_field :name %>
-  <div>
-    <%= form.submit :submit %>
-  </div>
+  <%= form_for @category do |form| %>
+    <%= form.label :name, "Category Name" %>
+    <%= form.text_field :name %>
+    <div>
+      <%= form.submit :submit %>
+    </div>
+  <% end %>
 <% end %>

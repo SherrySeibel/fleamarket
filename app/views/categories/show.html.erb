@@ -7,6 +7,6 @@
 
 <ol>
   <% @products.each do |product| %>
-    <li><%= product.name %> | Auction ends at: <%= product.auction_ends_at %></li>
+    <li><%= link_to product.name, product %> | Auction ends at: <%= product.auction_ends_at %></li>
   <% end %>
 </ol>

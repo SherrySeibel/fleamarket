@@ -7,8 +7,7 @@
   <% end %>
 </div>
 
-<% if current_user.admin? %>
-  <%= link_to "Categories", :categories %>
-<% end %>
+<%= link_to "Product Categories", :categories %>
+
 <h3><%= link_to "View my products", current_user %></h3>
 <h3><%= link_to "Add new item for sale", [:new, :product] %></h3>

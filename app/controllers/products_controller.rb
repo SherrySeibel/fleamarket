@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  def index
+    @products = Product.all
+  end
+
   def new
     @categories = Category.alphabetical
     @product = Product.new
@@ -15,10 +19,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def index
-    @products = Product.all
-  end
-
   def show
     @product = Product.find(params[:id])
     @bid = Bid.new
@@ -27,19 +27,23 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = current_user.products.find(params[:id])
-    @categories = Category.all
+    @product = Product.find(params[:id])
+    if current_user.allowed_to_modify_product?(@product)
+      @categories = Category.all
+    end
   end
 
   def update
-    @product = current_user.products.find(params[:id])
+    @product = Product.find(params[:id])
     @categories = Category.all
 
-    if @product.update(product_params)
-      redirect_to @product
-    else
-      @bid = Bid.new
-      render :edit
+    if current_user.allowed_to_modify_product?(@product)
+      if @product.update(product_params)
+        redirect_to @product
+      else
+        @bid = Bid.new
+        render :edit
+      end
     end
   end
 
