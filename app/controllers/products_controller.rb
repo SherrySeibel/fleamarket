@@ -21,7 +21,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @images = @product.images
+    @bid = Bid.new
+    @bids = @product.bids.order(amount: :desc)
+    @highest_bid = @bids.first
   end
 
   def edit

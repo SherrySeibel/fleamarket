@@ -1,6 +1,6 @@
 <%= render @product %>
 
-<h3>Place a bid on <%= @product.name %></h3>
+<h3>Place a new bid on <%= @product.name %></h3>
 
 <%= render "error_messages", target: @bid %>
 
@@ -9,3 +9,12 @@
   <%= form.number_field :amount, step: 1.0 %>
   <%= form.submit :submit %>
 <% end %>
+
+<h3>Placed Bids</h3> 
+
+<p>The highest bid belongs to: <%= @highest_bid.user.email %> with a whopping <%= number_to_currency(@highest_bid.amount) %></p>
+<div>
+  <ol>
+    <%= render @bids %>
+  </ol>
+</div>

@@ -6,6 +6,8 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_to @product
     else
+      @bids = @product.bids.order(amount: :desc)
+      @highest_bid = @bids.first
       render "products/show"
     end
   end
