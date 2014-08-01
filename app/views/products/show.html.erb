@@ -12,7 +12,11 @@
 
 <h3>Placed Bids</h3> 
 
-<p>The highest bid belongs to: <%= @highest_bid.user.email %> with a whopping <%= number_to_currency(@highest_bid.amount) %></p>
+<% if @bids.empty? %>
+  <p>There aren't any bids on this item yet.</p>
+  <% else %>
+  <p>The highest bid belongs to: <%= @highest_bid.user.email %> with a whopping <%= number_to_currency(@highest_bid.amount) %></p>
+<% end %>
 <div>
   <ol>
     <%= render @bids %>

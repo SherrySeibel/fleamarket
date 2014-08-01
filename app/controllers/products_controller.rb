@@ -1,6 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :require_owner, only: [:edit, :update]
-
   def new
     @categories = Category.alphabetical
     @product = Product.new
@@ -25,7 +23,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @bid = Bid.new
     @bids = @product.bids.order(amount: :desc)
-    @highest_bid = @bids.first
+    @highest_bid = @bids.first || @highest_bid = @product.price
   end
 
   def edit

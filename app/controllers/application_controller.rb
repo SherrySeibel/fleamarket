@@ -9,10 +9,4 @@ class ApplicationController < ActionController::Base
       redirect_to :root
     end
   end
-
-  def require_owner
-    if ! current_user.product
-      redirect_to :root
-    end
-  end
 end
