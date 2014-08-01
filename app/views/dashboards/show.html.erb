@@ -1,4 +1,12 @@
 <h2>FleaMarket Dashboard</h2>
+
+<div>
+  <%= form_tag search_path, method: :get do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
 <% if current_user.admin? %>
   <%= link_to "Categories", :categories %>
 <% end %>
