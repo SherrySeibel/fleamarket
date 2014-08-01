@@ -24,11 +24,9 @@ class ProductsController < ApplicationController
     @images = @product.images
     @bid = Bid.new
 
-    if @product.auction_starts_at < DateTime.now && @product.auction_ends_at > DateTime.now
-      @auction_over = false
-      @time_remaining = "Time remaining on auction #{@product.auction_ends_at - DateTime.now}"
-    else
-      @auction_over = true
+    if @product.auction_active?(@product)
+      @auction_active = true
+      @product.auction_time_remaining
     end
   end
 

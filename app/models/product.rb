@@ -19,4 +19,19 @@ class Product < ActiveRecord::Base
   def self.chronological
     order("created_at DESC")
   end
+
+  def auction_active?(product)
+    product.auction_starts_at < DateTime.now && product.auction_ends_at > DateTime.now
+  end
+
+  def auction_time_remaining
+    product_end = @product.auction_ends_at
+    current_time = DateTime.now
+
+    time_remaining = product_end - current_time
+    @minutes, @seconds = time_remaining.divmod(60)
+    @hours, @minutes = @minutes.divmod(60)
+    @days, @hours = @hours.divmod(24)
+
+  end
 end

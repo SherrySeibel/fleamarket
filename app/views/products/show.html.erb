@@ -1,14 +1,17 @@
 <%= render @product %>
 
-<% if @auction_over %>
-  <h4>Auction is over</h4>
-<% else %>
+<% if @auction_active %>
   <h4><%= @time_remaining %></h4>
 
-  <%= form_for [@product, @bid] do |form| %>
-    <%= render "error_messages", target: @bid %>
-    <%= form.label "Enter your bid in USD " %>
-    <%= form.number_field :amount, step: 1.0 %>
-    <%= form.submit :submit %>
-  <% end %>
+  <h4>Auction Time Remaining:
+    <%= @days %> days, <%= @hours %> hours, <%= @minutes %> minutes, <%= @seconds %> seconds</h4>
+
+    <%= form_for [@product, @bid] do |form| %>
+      <%= render "error_messages", target: @bid %>
+      <%= form.label "Enter your bid in USD " %>
+      <%= form.number_field :amount, step: 1.0 %>
+      <%= form.submit :submit %>
+    <% end %>
+  <% else %>
+    <h4>Auction is over</h4>
 <% end %>
