@@ -10,7 +10,7 @@
   <%= form.submit :submit %>
 <% end %>
 
-<h3>Placed Bids</h3> 
+<h3>Placed Bids</h3>
 
 <p>The highest bid belongs to: <%= @highest_bid.user.email %> with a whopping <%= number_to_currency(@highest_bid.amount) %></p>
 <div>
