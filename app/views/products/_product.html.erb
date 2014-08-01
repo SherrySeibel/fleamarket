@@ -22,7 +22,7 @@ Starting Price: <%= number_to_currency(product.price) %><br>
 </p>
 
 <div>
-  <% if product.user_id == current_user.id %>
+  <% if current_user.allowed_to_modify_product?(@product)%>
     <%= button_to "Edit Product", [:edit, product], method: :get %>
     <p><%= link_to "Add image", [:new, product, :image] %></p>
   <% end %>
