@@ -12,3 +12,4 @@ gem 'spring',        group: :development
 gem 'monban'
 gem 'monban-generators'
 gem 'stripe'
+gem 'dotenv-rails', :groups => [:development, :test]
