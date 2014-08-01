@@ -22,6 +22,14 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @images = @product.images
+    @bid = Bid.new
+
+    if @product.auction_starts_at < DateTime.now && @product.auction_ends_at > DateTime.now
+      @auction_over = false
+      @time_remaining = "Time remaining on auction #{@product.auction_ends_at - DateTime.now}"
+    else
+      @auction_over = true
+    end
   end
 
   def edit
