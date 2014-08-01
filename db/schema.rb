@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731181416) do
+ActiveRecord::Schema.define(version: 20140731152745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,13 @@ ActiveRecord::Schema.define(version: 20140731181416) do
     t.integer  "buyer_id",                                                    null: false
     t.integer  "seller_id",                                                   null: false
     t.integer  "product_id",                                                  null: false
+    t.string   "stripe_customer_token",                                       null: false
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
-    t.string   "stripe_customer_token"
   end
 
   add_index "payments", ["buyer_id"], name: "index_payments_on_buyer_id", using: :btree
+  add_index "payments", ["product_id"], name: "index_payments_on_product_id", using: :btree
   add_index "payments", ["seller_id"], name: "index_payments_on_seller_id", using: :btree
 
   create_table "products", force: true do |t|
@@ -64,9 +65,9 @@ ActiveRecord::Schema.define(version: 20140731181416) do
     t.integer  "category_id",                                             null: false
     t.datetime "created_at",                                              null: false
     t.datetime "updated_at",                                              null: false
+    t.decimal  "price",             precision: 8, scale: 2, default: 0.0, null: false
     t.datetime "auction_starts_at",                                       null: false
     t.datetime "auction_ends_at",                                         null: false
-    t.decimal  "price",             precision: 8, scale: 2, default: 0.0, null: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree

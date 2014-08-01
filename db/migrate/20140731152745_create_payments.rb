@@ -4,7 +4,8 @@ class CreatePayments < ActiveRecord::Migration
       t.decimal :amount, null: false, default: 0, precision: 8, scale: 2
       t.belongs_to :buyer, index: true, null: false
       t.belongs_to :seller, index: true, null: false
-      t.belongs_to :product, null: false
+      t.belongs_to :product, index: true, null: false
+      t.string :stripe_customer_token, index: true, null: false
 
       t.timestamps null: false
     end
